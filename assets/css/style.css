@@ -68,10 +68,6 @@ footer {
   border-top: 5px solid var(--primary);
 }
 
-main {
-  display: flex;
-  margin-bottom: 2%;
-}
 .page-title {
   color: var(--primary);
   margin-bottom: 5px;
@@ -87,7 +83,6 @@ main {
   margin: 25px auto;
   width: 95%;
 }
-
 
 .task-list-wrapper {
   flex: 1;
