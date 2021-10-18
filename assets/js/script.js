@@ -132,7 +132,7 @@ pageContentEl.addEventListener("click", taskButtonHandler);
     var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
     taskSelected.remove();
 
-    varupdatedTaskArr = [];
+    var updatedTaskArr = [];
 
     //loop through current tasks
     for ( var i = 0; i < tasks.length; i++) {
@@ -221,5 +221,24 @@ pageContentEl.addEventListener("click", taskButtonHandler);
     var saveTasks = function() {
       localStorage.setItem("tasks", JSON.stringify(tasks));
     }
+
+    var loadTasks = function() {
+      //get task items from local storage
+      var savedTasks = localStorage.getItem("tasks", tasks);
+
+      if(!savedTasks) {
+        return false;
+      }
+      //convert tasks from JSON into an array of objects
+      savedTasks = JSON.parse(savedTasks);
+
+      for (var i = 0; i < savedTasks.length; i++) {
+        // pass each task object into the `createTaskEl()` function
+        createTaskEl(savedTasks[i]);
+      }
+      console.log(savedTasks)
+    }
+
+    loadTasks();
 
   pageContentEl.addEventListener("change", taskStatusChangeHandler);
